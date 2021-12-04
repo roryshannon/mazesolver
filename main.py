@@ -7,9 +7,11 @@ if __name__ == '__main__':
     
 perfect.create_graph('Perfect')
 
-perfect.get()
+perfect.maze_getter()
 
 perfect.edges_getter()
+
+perfect.get_node_walls()
 
 
 

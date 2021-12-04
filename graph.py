@@ -217,6 +217,7 @@ class Graph:
 
   def add_node(self,key):
     new_node = Node(key)
+    #new_node.get_walls()
     self.node_list[key] = new_node
     
   def edges_getter(self):
@@ -225,16 +226,15 @@ class Graph:
       print(self.edges[i])
       
       
-  def get(self):  
+  def maze_getter(self):  
     for i in self.node_list:
       print("|", i,end ="")
       if i < 10:
         print(" ", end="")
       if i % 10 == 0:
         print("| \n")
-        
-        
       
-        
-
-  
+  def get_node_walls(self):
+    for i in self.node_list:
+      self.node_list[i].get_walls()
+    

@@ -12,4 +12,4 @@ class Node:
   
   def get_walls(self):
     print(f"Node {self.id} has a wall North:{self.North}, has a wall West:{self.West}, has a wall East:{self.East}, has a wall south:{self.South}")
-    #return self.North, self.West, self.East, self.South 
+    return self.North, self.West, self.East, self.South 

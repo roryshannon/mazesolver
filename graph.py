@@ -5,9 +5,12 @@ class Graph:
     self.node_list = {}
     self.edges = {}
     
-
+    
   def create_graph(self, graph):
     if graph == 'Perfect':
+      self.start = 50 # defining the terminal points for the maze
+      self.end = 92
+      self.ROW = 10
       self.edges = {
         1: [2,11],
         2: [1,3],
@@ -21,7 +24,7 @@ class Graph:
         10: [20],
         11: [1,21],
         12: [13],
-        13: [12,14],
+        13: [3, 12,14],
         14: [13],
         15: [5,16],
         16: [15,26],
@@ -37,7 +40,7 @@ class Graph:
         26: [16],
         27: [28,37],
         28: [27,29],
-        29: [19,39],
+        29: [19,28,39],
         30: [20,40],
         31: [21,41],
         32: [22,33],
@@ -53,7 +56,7 @@ class Graph:
         42: [41,52],
         43: [33,53],
         44: [45,54],
-        45: [33,44],
+        45: [35,44],
         46: [36,47,56],
         47: [46,48],
         48: [47],
@@ -111,6 +114,9 @@ class Graph:
         100: [99]
         }
     else:
+      self.start = 75
+      self.end = 19
+      self.ROW = 10
       self.edges = {
         1: [2,11],
         2: [1,12],
@@ -221,9 +227,10 @@ class Graph:
     self.node_list[key] = new_node
     
   def edges_getter(self):
-    for i in self.edges:
-      print("Node", i, "Conected to nodes: ", end="")
-      print(self.edges[i])
+    #for i in self.edges:
+      #print("Node", i, "Conected to nodes: ", end="")
+      #print(self.edges[i])
+    return self.edges
       
       
   def maze_getter(self):  
@@ -237,4 +244,14 @@ class Graph:
   def get_node_walls(self):
     for i in self.node_list:
       self.node_list[i].get_walls()
+      
+  def ROW_getter(self):
+    return self.ROW
+  
+  def start_getter(self):
+    return self.start
+  
+  def end_getter(self):
+    return self.end
+
     

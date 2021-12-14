@@ -1,5 +1,6 @@
 from graph import Graph
 from wall_follower import wall_follower
+from tremauxs_solver import Tremauxs
 
 if __name__ == '__main__':
   perfect = Graph()
@@ -7,7 +8,7 @@ if __name__ == '__main__':
     perfect.add_node(i)
  
  
-perfect.create_graph('Perfect')
+perfect.create_graph('Braided')
 
 perfect.maze_getter()
 
@@ -26,4 +27,16 @@ def wall_follower_function():
   solve.make_move()    
     
 
-wall_follower_function()
+def tremaux_solver_function():
+  tremauxs = Tremauxs()
+  tremauxs.set_terminal_squares(perfect.start_getter(), perfect.end_getter())
+  tremauxs.set_ROW(perfect.ROW_getter())
+  tremauxs.set_direction(0)
+  tremauxs.set_current_square(perfect.start_getter())
+  tremauxs.set_edges(perfect.edges_getter())
+  tremauxs.get_available_moves()
+  tremauxs.make_move() 
+    
+
+#wall_follower_function()
+tremaux_solver_function()

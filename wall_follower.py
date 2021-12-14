@@ -1,3 +1,5 @@
+import time
+
 class wall_follower:
     def __init__(self):
         self.name = "theseus"
@@ -58,10 +60,13 @@ class wall_follower:
     def make_move(self):
         degrees = 0
         while self.current_square != self.end_square:
+            time.sleep(0.2) #to control speed!
+            
             if self.current_square + self.left in self.connections:
                 print("moving left") #so the follower should turn left, as the wall has run out
                 self.current_square = self.current_square + self.left
                 self.connections = self.get_available_moves()
+                
                 degrees += 90
                 if degrees > 270:
                     degrees = 0 #resetting degrees to 0 when a full circle has been completed
@@ -76,6 +81,7 @@ class wall_follower:
                 print("moving right") #kinda irrelevant unless there is no move forward
                 self.current_square = self.current_square + self.right
                 self.connections = self.get_available_moves()
+                
                 degrees += - 90
                 if degrees < 0:
                     degrees = 270 #circle for the degrees
@@ -87,11 +93,6 @@ class wall_follower:
                 if degrees > 270:
                     degrees = 0 #resetting degrees to 0 when a full circle has been completed
                 self.set_direction(degrees)
-                
-                
-                #hhahahah i was missing a connection ugh
-                #getting stuck at 12 13 14 on the maze! prehapos something I did wrong at dead end or maybe right, this is importnant as the wall follower should follow the wall round 4 to 3 to 13 to 14 to 13 to 12 to 13 to 3 to 2 
-        
-        
-        
-    
+          
+          
+          #changing the vistited properties for the visual representation

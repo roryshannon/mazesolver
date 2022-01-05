@@ -115,7 +115,7 @@ class Graph:
         }
     else:
       self.start = 75
-      self.end = 19
+      self.end = 91
       self.ROW = 10
       self.edges = {
         1: [2,11],
@@ -132,7 +132,7 @@ class Graph:
         12: [2,22],
         13: [3,13],
         14: [4,24],
-        15: [5,25],
+        15: [5,16,25],
         16: [15,17],
         17: [7,16,18],
         18: [17,19],
@@ -235,11 +235,11 @@ class Graph:
       
   def maze_getter(self):  
     for i in self.node_list:
-      print("|", i,end ="")
+      print("|", i, "|", end ="")
       if i < 10:
         print(" ", end="")
       if i % 10 == 0:
-        print("| \n")
+        print("|\n")
       
   def get_node_walls(self):
     for i in self.node_list:

@@ -60,7 +60,7 @@ class wall_follower:
     def make_move(self):
         degrees = 0
         while self.current_square != self.end_square:
-            time.sleep(0.2) #to control speed!
+            #time.sleep(0.2) #to control speed!
             
             if self.current_square + self.left in self.connections:
                 print("moving left") #so the follower should turn left, as the wall has run out

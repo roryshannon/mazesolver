@@ -31,7 +31,7 @@ def tremaux_solver_function():
   tremauxs = Tremauxs()
   tremauxs.set_terminal_squares(perfect.start_getter(), perfect.end_getter())
   tremauxs.set_ROW(perfect.ROW_getter())
-  tremauxs.set_direction(0)
+  tremauxs.set_direction()
   tremauxs.set_current_square(perfect.start_getter())
   tremauxs.set_edges(perfect.edges_getter())
   tremauxs.get_available_moves()

@@ -6,6 +6,8 @@ class Node:
     self.East=True
     self.South=True
     self.West=True
+    
+    self.visited = False
 
   def getId(self):
     return self.id

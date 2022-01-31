@@ -1,67 +1,23 @@
-My Trumeauxs algorithm must:
-	Junction?
-		No: Go forward
+Tremauxs algorithm
+go to next square, place in visited
 
-		Yes: Any paths in visited?
-            No: Choose and mark path
+if unvisited squares
 
-            Yes: any paths not in vivisted?
-                No: deadend turn around
+visit them 
 
-	            Yes: choose and mark path 
+if node has no unvisited squares, it is explored and should be treated as a dead
 
+need to use: stack for order of the ndoes visited as you pastt through them!
 
-
-Tremauxs code:
-    if there is a junction: 
-
-        if any of the connections are NOT in visited:
-            choose it
-            mark as visited 
-            move to next square
-        else if all squares have been visited:
-            turn around as this is a deadend
-
-        
-    else:
-        go forward
+and a list of visited nodes, but inclides ALL nodes!
 
 
 
-everytime you arrive at a junction
-is connection 1 in visited?
-is 2?
-is 3?
-until you find the one that isnt
-If they all are then turn around!
+for each square, when you visit it, set its visited value to True, add it to the stack, when all its ndoes are visited it is explored
 
+and keep a stack of the visited nodes, upon visitng add to stack, when explored pop off the stack // pop off the stack and set as explored
 
-Tremauxshit is this code?
-
-    if connections > 2: 
-            
-        for i in range self.connections
-            if self.connections[i] not in visited:
-                current_square = next_square
-                visited.append(current_square)
-                
-                break
-                
-
-            elif all squares visited #if all connections are in vivisted
-            deadend code
-            
-
-    else:
-        current_square = current_square + forward
-                    
-
-
-
-
-
-
-
+and keep an order of all nodes so we know which way you have gone
 
 
 

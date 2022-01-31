@@ -141,3 +141,131 @@ class Tremauxs:
                         degrees = 0 #resetting degrees to 0 when a full circle has been completed
                     self.set_direction(degrees)
                                    
+                                   
+                                   
+                                   
+def make_move(self):
+        
+        while self.current_square != self.end_square:
+            
+            
+            if len(self.connections) > 2: #junction
+                
+                left_square = self.current_square + self.left
+                right_square = self.current_square + self.right
+                forward_square = self.current_square + self.forward
+                
+                if left_square in self.connections and left_square not in self.visited:
+                    #go left func?
+                    print("moving left at junction") 
+                    self.current_square = self.current_square + self.left
+                    self.connections = self.get_available_moves()
+                    
+                    self.degrees += 90
+                    if self.degrees > 270:
+                        self.degrees = 0
+                    self.set_direction()
+                
+                    
+                    self.visited.append(self.current_square)
+                
+                elif right_square in self.connections and right_square not in self.visited:
+                    #go right
+                    print("moving right at junction") 
+                    self.current_square = self.current_square + self.right
+                    self.connections = self.get_available_moves()
+                    
+                    self.degrees += - 90
+                    if self.degrees < 0:
+                        self.degrees = 270
+                    self.set_direction()
+                
+                
+                    self.visited.append(self.current_square)
+                        
+                elif forward_square in self.connections and forward_square not in self.visited:
+                    #go forward
+                    print("moving forward") #so the follower should go forward
+                    self.current_square = self.current_square + self.forward
+                    self.connections = self.get_available_moves()
+                    
+                    
+                    self.visited.append(self.current_square)
+                                 
+ 
+                else:
+                    print("all squares are visited! lets check if we can go back over a visited square ")
+                    
+                    self.explore()
+                    
+                    '''print("all next squares lead nowhere!")
+                    self.degrees += 180
+                    if self.degrees > 270:
+                        self.degrees = 0
+                    self.set_direction()
+                    time.sleep(3)  '''
+                    #ahhhh!! now we need bactracking recursion!!!!
+                      
+            
+            else:
+                    
+                self.go()
+                
+                
+                
+'''My Trumeauxs algorithm must:
+	Junction?
+		No: Go forward
+
+		Yes: Any paths in visited?
+            No: Choose and mark path
+
+            Yes: any paths not in vivisted?
+                No: deadend turn around
+
+	            Yes: choose and mark path 
+
+
+
+Tremauxs code:
+    if there is a junction: 
+
+        if any of the connections are NOT in visited:
+            choose it
+            mark as visited 
+            move to next square
+        else if all squares have been visited:
+            turn around as this is a deadend
+
+        
+    else:
+        go forward
+
+
+
+everytime you arrive at a junction
+is connection 1 in visited?
+is 2?
+is 3?
+until you find the one that isnt
+If they all are then turn around!
+
+
+Tremauxshit is this code?
+
+    if connections > 2: 
+            
+        for i in range self.connections
+            if self.connections[i] not in visited:
+                current_square = next_square
+                visited.append(current_square)
+                
+                break
+                
+
+            elif all squares visited #if all connections are in vivisted
+            deadend code
+            
+
+    else:
+        current_square = current_square + forward'''

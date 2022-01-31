@@ -35,7 +35,7 @@ def tremaux_solver_function():
   tremauxs.set_current_square(perfect.start_getter())
   tremauxs.set_edges(perfect.edges_getter())
   tremauxs.get_available_moves()
-  tremauxs.make_move() 
+  tremauxs.go() 
     
 
 #wall_follower_function()

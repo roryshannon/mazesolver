@@ -1,1 +1,101 @@
-#lol
+import time
+import random
+
+class random_mouse:
+    def __init__(self):
+        self.name = "mouse"
+        self.degrees = 0
+        direction_facing = "North"
+        
+    def set_terminal_squares(self, start, end):
+        self.start_square = start
+        self.end_square = end   
+    
+    def set_ROW(self, ROW):
+        self.ROW = ROW    
+    
+    def set_direction(self, degrees):
+        
+        self.degrees = degrees
+        if self.degrees == 0:
+            self.forward = - self.ROW
+            self.left = -1
+            self.right = +1
+            self.compass = "North"
+            
+            
+        if self.degrees == 90:
+            self.forward = -1
+            self.left = + self.ROW
+            self.right = - self.ROW
+            self.compass = "West"
+            
+            
+        if self.degrees == 180:
+            self.forward = + self.ROW
+            self.left = +1
+            self.right = -1
+            self.conpass = "South"
+            
+            
+        if self.degrees == 270:
+            self.forward = +1
+            self.left = - self.ROW
+            self.right = + self.ROW
+            self.compass = "East"          
+     
+    def set_current_square(self, current):
+        self.current_square = current #setting as zero to first test get available squares
+        #means the square/ node the wall follower is in is updated 
+        
+    def set_edges(self, edges):
+        self.edges = edges
+        
+    def get_available_moves(self):
+        
+        self.connections = self.edges[self.current_square]
+        print(f"at {self.current_square} theseus can move to: {self.connections}")
+        
+        return self.connections
+        
+    def random_move(self):
+        degrees = 0
+        while self.current_square != self.end_square:
+            #time.sleep(0.2) #to control speed!
+            if self.connections > 2: #junction
+                print("choose random junction")
+                
+            if self.current_square + self.left in self.connections:
+                print("moving left") #so the follower should turn left, as the wall has run out
+                self.current_square = self.current_square + self.left
+                self.connections = self.get_available_moves()
+                
+                degrees += 90
+                if degrees > 270:
+                    degrees = 0 #resetting degrees to 0 when a full circle has been completed
+                self.set_direction(degrees)               
+                
+            elif self.current_square + self.forward in self.connections:
+                print("moving forward") #so the follower should go forward
+                self.current_square = self.current_square + self.forward
+                self.connections = self.get_available_moves()
+                
+            elif self.current_square + self.right in self.connections:
+                print("moving right") #kinda irrelevant unless there is no move forward
+                self.current_square = self.current_square + self.right
+                self.connections = self.get_available_moves()
+                
+                degrees += - 90
+                if degrees < 0:
+                    degrees = 270 #circle for the degrees
+                self.set_direction(degrees) 
+                    
+            else:
+                print("dead end!, retracing steps!")
+                degrees += 180
+                if degrees > 270:
+                    degrees = 0 #resetting degrees to 0 when a full circle has been completed
+                self.set_direction(degrees)
+          
+          
+          #changing the vistited properties for the visual representation

@@ -59,61 +59,24 @@ class Tremauxs:
         
         
         return self.connections
-    
-
-    def hmm(self):
-        
-        if self.current_square + self.forward in self.connections:
-            print("moving forward") #so the follower should go forward
-            
-            self.current_square = self.current_square + self.forward
-            self.visited.append(self.current_square)
-            self.connections = self.get_available_moves()               
-            
-            
-        elif self.current_square + self.right in self.connections:
-            print("moving right") #kinda irrelevant unless there is no move forward
-            self.current_square = self.current_square + self.right
-            self.visited.append(self.current_square)
-            self.connections = self.get_available_moves()
-            
-            self.degrees += - 90
-            if self.degrees < 0:
-                self.degrees = 270 #circle for the degrees
-            self.set_direction() 
-        
-    
-        elif self.current_square + self.left in self.connections:
-            print("moving left") 
-            self.current_square = self.current_square + self.left
-            self.visited.append(self.current_square)
-            self.connections = self.get_available_moves()
-            
-            self.degrees += 90
-            if self.degrees > 270:
-                self.degrees = 0 #resetting degrees to 0 when a full circle has been completed
-            self.set_direction()
-            
-        else:
-            print("dead end!, retracing steps!")
-            self.degrees += 180
-            if self.degrees > 270:
-                self.degrees = 0 #resetting degrees to 0 when a full circle has been completed
-            self.set_direction()
      
       
     def go(self):
-        self.tremauxs(self.visited,self.edges,self.start_square)  
+        end = self.tremauxs(self.visited,self.edges,self.start_square)  
+        
+    def stop(self):
+        print("thanks for using my code")
+        time.sleep(100000000)
            
     def tremauxs(self,visited,graph,node):
         #DFS lol
           #function for dfs
         if node == self.end_square:
-            print(node)
+            print("final node,",node,"reached")
             print("solution found!")
-            return node
-        if node not in visited:
-            print (node)
+            self.stop()
+        elif node not in visited:
+            print ("moving to", node)
             visited.append(node)
             for neighbour in graph[node]:
                 self.tremauxs(visited, graph, neighbour)

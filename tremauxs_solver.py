@@ -1,4 +1,6 @@
+from termios import NOFLSH
 import time
+import sys
 from node import Node
 
 class Tremauxs:
@@ -58,44 +60,43 @@ class Tremauxs:
         self.connections = self.edges[self.current_square]
         
         
-        return self.connections
-     
+        return self.connections    
       
     def go(self):
-        end = self.tremauxs(self.visited,self.edges,self.start_square)  
+        end = self.tremauxs_rec(self.visited,self.edges,self.start_square)
+        ##print(f"end is {end}") 
         
     def stop(self):
-        print("thanks for using my code")
-        time.sleep(100000000)
+        input = ("thanks for using my code")
+        sys.exit()
+        
+        
            
-    def tremauxs(self,visited,graph,node):
-        #DFS lol
-          #function for dfs
+    def tremauxs_rec(self,visited,graph,node):
+         
+        #function for trems
         if node == self.end_square:
             print("final node,",node,"reached")
             print("solution found!")
+            #return node
             self.stop()
-        elif node not in visited:
+            
+        else:
             print ("moving to", node)
             visited.append(node)
             for neighbour in graph[node]:
-                self.tremauxs(visited, graph, neighbour)
-
-
+                if neighbour not in visited:
+                    self.tremauxs_rec(visited, graph, neighbour)
         
-                    
-                
-                    
-                
-            
-            
-            
-            
-                         
-                 
-                
-                
-            
-                
-                                   
-                                   
+        
+    '''def tremauxs_diff(self):
+        stack = []
+        
+        while self.current_square != self.end_square:
+            for neighbour in self.edges[self.current_square]:
+                if neighbour not in self.visited:
+                    stack.append(neighbour)
+            if not self.current_square in self.visited:
+              self.visited.append(self.current_square)
+            self.current_square = stack.pop()'''
+                                          

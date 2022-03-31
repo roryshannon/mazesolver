@@ -1,14 +1,14 @@
 from node import Node
 
 class Graph:
-  def __init__(self):
+  def __init__(self): #initialising the graph with two dictionaries for nodes and conecctions
     self.node_list = {}
     self.edges = {}
     
     
-  def create_graph(self, graph):
+  def create_graph(self, graph): #a rather inneficient way of defining which nodes are connected to which, by defining by hand and drawing reference from the maze i created to wrok from
     if graph == 'Perfect':
-      self.start = 50 # defining the terminal points for the maze
+      self.start = 50 # defining the start and end points for the maze
       self.end = 92
       self.ROW = 10
       self.edges = {
@@ -221,7 +221,7 @@ class Graph:
         }
 
 
-  def add_node(self,key):
+  def add_node(self,key): #calling the Node class and instantiating a new node obejct for each square
     new_node = Node(key)
     #new_node.get_walls()
     self.node_list[key] = new_node

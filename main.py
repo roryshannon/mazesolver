@@ -38,5 +38,5 @@ def tremaux_solver_function():
   tremauxs.go() 
     
 
-#wall_follower_function()
-tremaux_solver_function()
+wall_follower_function()
+#tremaux_solver_function()

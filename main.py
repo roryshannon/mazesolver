@@ -31,13 +31,9 @@ def wall_follower_function(): #a way to call the funcitons to get the wall follo
 def tremaux_solver_function():
   tremauxs = Tremauxs()
   tremauxs.set_terminal_squares(perfect.start_getter(), perfect.end_getter())
-  tremauxs.set_ROW(perfect.ROW_getter())
-  tremauxs.set_direction()
-  tremauxs.set_current_square(perfect.start_getter())
   tremauxs.set_edges(perfect.edges_getter())
-  tremauxs.get_available_moves()
   tremauxs.go() #same as wall follwer effectively uses other functions to reset values
     
 
 #wall_follower_function() # a way to chose which solver was used (by commenting out the one you didnt want), very useful during early testing but also of course changed to a button imput for the GUI
-#tremaux_solver_function()
+tremaux_solver_function()

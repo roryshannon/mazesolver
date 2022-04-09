@@ -69,8 +69,7 @@ class Tremauxs:
     def stop(self):
         input = ("thanks for using my code")
         sys.exit()
-        
-        
+               
            
     def tremauxs_rec(self,visited,graph,node):
          
@@ -89,14 +88,3 @@ class Tremauxs:
                     self.tremauxs_rec(visited, graph, neighbour)
         
         
-    '''def tremauxs_diff(self):
-        stack = []
-        
-        while self.current_square != self.end_square:
-            for neighbour in self.edges[self.current_square]:
-                if neighbour not in self.visited:
-                    stack.append(neighbour)
-            if not self.current_square in self.visited:
-              self.visited.append(self.current_square)
-            self.current_square = stack.pop()'''
-                                          

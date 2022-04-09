@@ -224,16 +224,16 @@ class Graph:
   def add_node(self,key): #calling the Node class and instantiating a new node obejct for each square
     new_node = Node(key)
     #new_node.get_walls()
-    self.node_list[key] = new_node
+    self.node_list[key] = new_node #adding the new node to the graph dictionary node_list
     
-  def edges_getter(self):
+  def edges_getter(self): #a getter for the edges of the graph
     #for i in self.edges:
       #print("Node", i, "Conected to nodes: ", end="")
       #print(self.edges[i])
     return self.edges
       
       
-  def maze_getter(self):  
+  def maze_getter(self):  #a way for me to print the maze before I had crated my GUI (so now a little redundant but useful at the time)
     for i in self.node_list:
       print("|", i, "|", end ="")
       if i < 10:
@@ -241,17 +241,15 @@ class Graph:
       if i % 10 == 0:
         print("|\n")
       
-  def get_node_walls(self):
+  def get_node_walls(self): #a getter to see which nodes had walls where (/ where the wasnt connections to eventually sent to a GUI if needed)
     for i in self.node_list:
       self.node_list[i].get_walls()
       
-  def ROW_getter(self):
+  def ROW_getter(self): #another getter but this time used together when changing the size of the maze, used by the set direction function to check how many squares on move "up" is
     return self.ROW
   
-  def start_getter(self):
+  def start_getter(self): # to access the start square
     return self.start
   
-  def end_getter(self):
+  def end_getter(self): # to access the end square
     return self.end
-
-    
